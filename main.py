@@ -4,6 +4,8 @@ import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from crud import save_email_summary
+
 load_dotenv()
 
 client = OpenAI()
@@ -25,7 +27,11 @@ def get_email_summary(email_text: str) -> str:
             ),
             input=email_text,
         )
-        return response.output_text
+        summary = response.output_text
+
+        save_email_summary(email_text, summary)
+
+        return summary
     except Exception as e:
         st.error(f"An error accured: {e}")
         return None

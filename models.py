@@ -17,3 +17,9 @@ class EmailSummary(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=lambda: datetime.now(UTC), nullable=False
     )
+
+    def __repr__(self) -> str:
+        return (
+            f"EmailSummary(id={self.id}, email_text={self.email_text},"
+            f"summary={self.summary}, created_at={self.created_at})"
+        )
