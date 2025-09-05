@@ -4,7 +4,7 @@ import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from crud import save_email_summary
+from database.crud import save_email_summary
 
 load_dotenv()
 

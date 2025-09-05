@@ -1,6 +1,6 @@
 import streamlit as st
 
-from llm_utils import get_email_summary
+from services.llm import get_email_summary
 
 st.title("📧 AI Email Summarizer")
 st.write("Paste an email below, choose your summarization options, and get a quick overview in seconds.")

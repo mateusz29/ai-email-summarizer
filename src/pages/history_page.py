@@ -1,8 +1,8 @@
 import streamlit as st
 
 from constants import PAGE_SIZE
-from crud import get_summaries
-from ui_components import display_pagination_controls
+from database.crud import get_summaries
+from ui.components import display_pagination_controls
 
 st.title("📜 Summary History")
 st.write("Here you can find all the email summaries you've generated in the past.")

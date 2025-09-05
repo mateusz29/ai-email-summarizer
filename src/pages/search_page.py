@@ -1,8 +1,8 @@
 import streamlit as st
 
 from constants import PAGE_SIZE
-from crud import search_summaries
-from ui_components import display_pagination_controls
+from database.crud import search_summaries
+from ui.components import display_pagination_controls
 
 st.title("🔎 Search")
 st.write("Search through your past email summaries.")

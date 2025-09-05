@@ -1,7 +1,7 @@
 from sqlalchemy import func, select
 
-from database import get_session
-from models import EmailSummary
+from .database import get_session
+from .models import EmailSummary
 
 
 def save_email_summary(email_text: str, summary: str) -> None:
