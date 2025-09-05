@@ -2,22 +2,18 @@ import streamlit as st
 
 from crud import search_summaries
 
-
-def search_callback():
-    if st.session_state.keyword_input:
-        st.session_state.search_clicked = True
-
-
 st.title("🔎 Search")
 st.write("Search through your past email summaries.")
 
-st.text_input("Enter keyword", placeholder="Search in summary ...", key="keyword_input", on_change=search_callback)
+with st.form(key="search_form", border=False):
+    keyword_query = st.text_input(
+        "Enter keyword",
+        placeholder="Search in summary ...",
+    )
 
-if st.button("Search", type="primary") or st.session_state.get("search_clicked", False):
-    st.session_state.search_clicked = False
+    search_button = st.form_submit_button("Search", type="primary")
 
-    keyword_query = st.session_state.keyword_input
-
+if search_button:
     if keyword_query:
         summaries = search_summaries(keyword=keyword_query)
 
