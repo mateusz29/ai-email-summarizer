@@ -13,6 +13,17 @@ def save_email_summary(email_text: str, summary: str) -> None:
 
 def get_all_summaries():
     with get_session() as session:
-        statement = select(EmailSummary)
+        statement = select(EmailSummary).order_by(EmailSummary.created_at.desc())
+        result = session.execute(statement).scalars().all()
+        return result
+
+
+def search_summaries(keyword: str):
+    with get_session() as session:
+        statement = (
+            select(EmailSummary)
+            .where(EmailSummary.summary.ilike(f"%{keyword}%"))
+            .order_by(EmailSummary.created_at.desc())
+        )
         result = session.execute(statement).scalars().all()
         return result

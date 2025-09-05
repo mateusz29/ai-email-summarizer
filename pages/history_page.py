@@ -19,5 +19,5 @@ else:
                 st.caption(f"Created on: {summary.created_at.strftime('%Y-%m-%d %H:%M')}")
 
             with st.expander("Show Original Email Text"):
-                st.text(summary.email_text)
+                st.code(summary.email_text, language=None)
         st.write("")
